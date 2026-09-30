@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Seek</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <canvas id="ascii" aria-hidden="true"></canvas>
+  <main>
+    <header>
+      <div class="brand"><span class="dot"></span>Seek</div>
+      <span id="saved" class="saved" aria-live="polite"></span>
+    </header>
+    <p class="lede">An agent for your YouTube searches. It reads the query, answers it, and picks videos from the real results.</p>
+
+    <label>
+      <span class="label">Provider</span>
+      <select id="provider"></select>
+    </label>
+
+    <div id="keyRow">
+      <div class="labelrow">
+        <span class="label">API key</span>
+        <a id="keyLink" href="#" target="_blank" rel="noopener noreferrer">Get a free key ↗</a>
+      </div>
+      <span class="row">
+        <input id="apiKey" type="password" autocomplete="off" spellcheck="false">
+        <button id="reveal" type="button" class="ghost">Show</button>
+      </span>
+    </div>
+
+    <label id="baseRow" hidden>
+      <span class="label">Base URL</span>
+      <input id="baseUrl" type="text" spellcheck="false" autocomplete="off" placeholder="http://localhost:11434/v1">
+    </label>
+
+    <div>
+      <div class="labelrow">
+        <span class="label">Model</span>
+        <button id="loadModels" type="button" class="linkbtn">Load models</button>
+      </div>
+      <input id="model" type="text" list="models" spellcheck="false" autocomplete="off">
+      <datalist id="models"></datalist>
+    </div>
+
+    <p id="note" class="note"></p>
+
+    <div class="row test">
+      <button id="test" type="button" class="solid">Test connection</button>
+      <span id="testResult" class="result" aria-live="polite"></span>
+    </div>
+
+    <div class="group">
+      <span class="label">Theme</span>
+      <div class="seg" role="radiogroup" aria-label="Theme">
+        <label><input type="radio" name="theme" value="auto"><span>Auto</span></label>
+        <label><input type="radio" name="theme" value="light"><span>Light</span></label>
+        <label><input type="radio" name="theme" value="dark"><span>Dark</span></label>
+      </div>
+    </div>
+
+    <label class="switch">
+      <span>Animated ASCII background</span>
+      <input id="asciiToggle" type="checkbox">
+    </label>
+    <label class="switch">
+      <span>Run automatically on every search</span>
+      <input id="autoRun" type="checkbox">
+    </label>
+
+    <p class="foot">Keys are stored only in this browser profile. Each search sends the query and the visible result titles to the provider you choose, and uses one request.</p>
+  </main>
+  <script src="../shared/providers.js"></script>
+  <script src="../shared/ascii.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
